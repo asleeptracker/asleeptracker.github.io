@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Tracker</title>
+    <link rel='stylesheet' href='style.css' />
+    <link rel='shortcut icon' href='https://easycss.github.io/favicon/favicon.png' type='image/x-icon' />
+     <script src='tailwind.js'></script>
+</head>
+<body>
+<body class="bg-[#212124] fade-in">
+<div class="container max-w-[600px] m-2 pr-4 sm:mx-auto sm:p-0">
+
+ <nav class="my-2 sm:mb-3">
+    <div class="socials flex justify-between m-2 mb-3 sm:mx-0">
+      
+      <a href="https://github.com/mattheweq" target="_blank">
+        <img src="https://raw.githubusercontent.com/mattheweq/icons-repo/main/github.svg">
+      </a>
+
+      <a href="https://open.spotify.com/artist/66OsKKYin7yLMQUsZxjE91" target="_blank">
+        <img  id="spotify" src="https://raw.githubusercontent.com/mattheweq/icons-repo/main/soundwave.svg">
+      </a>
+
+      <a href="mailto:mattheweq8@gmail.com">
+        <img src="https://raw.githubusercontent.com/mattheweq/icons-repo/main/email.svg">
+      </a>
+    </div>
+  </nav>
+
+
+        <p class="text-sm text-center text-slate-400 mx-1 sm:mx-0 -mt-3 mb-1">Data will be lost when clearing cookies and site data.</p>
+
+
+        <div class="flex justify-between bg-black text-white ">
+          <h1 class="rounded font-bold mb-0 py-1 px-2">A Sleep Tracker</h1>
+          <button id="toggleButton" class="bg-yellow-400 text-black text-sm mr-0 px-2 w-16"><!-- add/close js text --></button>
+        </div>
+<!--  -->
+<!--  -->
+<div id="modal" class="fade-up">
+
+        <div class="flex justify-between items-center mb-2">
+          <button type="button" onclick="downloadData()" class="leading-none sm:leading-relaxed bg-blue-500 hover:bg-blue-400 text-sm sm:text-xl text-white font-bold p-3 sm:py-1 sm:px-2 rounded mt-2 mb-1 focus:outline-none focus:shadow-outline">Download Data</button>
+
+          <button type="button" onclick="clearLocalStorage()" class="leading-none sm:leading-relaxed bg-red-500 hover:bg-red-400 text-sm sm:text-xl text-white font-bold p-3 sm:py-1 sm:px-2 rounded mt-2 mb-1 focus:outline-none focus:shadow-outline">Clear All Data</button>
+        </div>
+
+        <form id="sleepForm" class="bg-white shadow-none rounded px-8 pt-6 pb-8 rounded-md">
+            <div class="mb-2">
+                <label for="bedtime" class="block text-gray-700 text-md sm:text-sm font-bold mb-0">Bedtime:</label>
+                <input type="time" id="bedtime" name="bedtime" autofocus required class="border rounded w-full mt-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-2">
+                <label for="rise" class="block text-gray-700 text-md sm:text-sm font-bold mb-0">Rise:</label>
+                <input type="time" id="rise" name="rise" required class="border rounded w-full mt-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700 text-md sm:text-sm font-bold mb-0">Enter date:</label>
+                <input type="date" id="date" name="date" required class="border rounded w-full mt-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <button type="button" onclick="saveSleep()" class="w-full mt-0 bg-green-500 hover:bg-green-700 text-md sm:text-sm sm:text-xl text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">Save</button>
+        </form>
+</div><!-- \modal -->
+<!--  -->
+<!--  -->
+      <div id="sleepDataDisplay" class="mt-2 transition-transform">
+        <ul id="sleepList">
+          <!-- Sleep data items will be appended here dynamically -->
+        </ul>
+      </div>
+
+</div><!-- \container -->
+
+<script src="app.js"></script>
+</body>
+</html>
