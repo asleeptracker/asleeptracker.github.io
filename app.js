@@ -27,8 +27,8 @@ function saveSleep() {
     }
 
     // Convert HH:mm strings to Date objects
-    let bedtime = new Date('1970-01-01T' + bedtimeString);
-    let rise = new Date('1970-01-01T' + riseString);
+    let bedtime = new Date('1970-01-01T' + bedtimeString + ':00');
+    let rise = new Date('1970-01-01T' + riseString + ':00');
 
     // Check if Date objects are valid
     if (isNaN(bedtime.getTime()) || isNaN(rise.getTime())) {
@@ -36,8 +36,15 @@ function saveSleep() {
         return;
     }
 
-    // Calculate hours and minutes of sleep
-    let timeDifference = rise - bedtime;
+    // Calculate time difference in milliseconds
+    let timeDifference = rise.getTime() - bedtime.getTime();
+
+    // Handle the case where bedtime is later than rise (crossing midnight)
+    if (timeDifference < 0) {
+        timeDifference += 24 * 60 * 60 * 1000; // Add 24 hours in milliseconds
+    }
+
+    // Calculate hours and minutes
     let hours = Math.floor(timeDifference / (60 * 60 * 1000));
     let minutes = Math.floor((timeDifference % (60 * 60 * 1000)) / (60 * 1000));
 
@@ -61,8 +68,6 @@ function saveSleep() {
     // Optionally, display a confirmation message
     // alert("Sleep data saved!");
 }
-
-
 
 // 
 // 
